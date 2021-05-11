@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../static/css/style.css">
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <!--[if lt IE 9]>
+  <script src="//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script src="//oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+  <title>Movie Register</title>
+</head>
+<body class="myBackground2">
+  <div class="container-fluid">
+    <h2>Register Movie</h2>
+    <form action="/movie/new" method="POST">
+
+      <div class="form-row">
+
+        <div class="col-xs-3">
+          <label for="title" class="control-label">Title</label>
+          <input type="text" class="form-control" placeholder="Title" name="title" required>
+        </div>
+
+        <div class="col-xs-5">
+          <label for="description" class="control-label">Description</label>
+          <input type="text" class="form-control" placeholder="Description" name="description" required>
+        </div>
+
+        <div class="col-xs-4">
+          <label for="type" class="control-label">Type</label>
+          <input type="text" class="form-control" placeholder="Type" name="type" required>
+        </div>
+
+      </div>
+      <div class="form-row">
+        <div class="dropdown col-xs-2">
+          <label for="classification" class="control-label">Classification</label>
+          <select class="form-select form-select-lg mb-3 form-control" name="classification" required>
+            <option selected value="">Select a option...</option>
+            <option value="L">L</option>
+            <option value="10">10</option>
+            <option value="12">12</option>
+            <option value="14">14</option>
+            <option value="16">16</option>
+            <option value="18">18</option>
+          </select>
+        </div>
+
+      </div>
+      <div class="form-row">
+        <div class="col-xs-12">
+          <br />
+          <button class="btn btn-primary" type="submit">Register</button>
+          <button class="btn btn-danger"><a href="/movies" style="text-decoration: none; color: white;">Cancel</a></button>
+        </div>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

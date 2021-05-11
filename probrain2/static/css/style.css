@@ -1,0 +1,12 @@
+.form-control {
+    width: 485px;
+}
+
+#result {
+    font-size: 18pt;
+}
+
+#divres {
+    text-align: center;
+    visibility: hidden;
+}

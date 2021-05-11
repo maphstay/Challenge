@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/static/css/style.css">
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="/static/js/script.js"></script>
+  <title>String Checker</title>
+</head>
+<body>
+  <div class="container-fluid">
+    <h2>String Checker</h2>
+
+    <form class="row g-3">
+      <div class="form-row">
+
+        <div class="col-xs-3">
+          <label for="one" class="control-label">Palindrome Checker</label>
+          <input type="text" class="form-control" name="one" id="palin" required>
+        </div>
+
+        <div class="col-xs-5">
+          <label for="two" class="control-label">String Informations</label>
+          <input type="text" class="form-control" name="two" id="str">
+        </div>
+
+        <div class="col-xs-5">
+          <label for="three" class="control-label">String Call Infos</label>
+          <input type="text" class="form-control" name="three" id="call">
+        </div>
+
+      <div class="form-row">
+        <div class="col-xs-12">
+          <br />
+          <button class="btn btn-primary" type="button" onclick="checkPalindrome()">Check Palindrome</button>
+          <button class="btn btn-primary" type="button" onclick="checkString()">Check String</button>
+          <button class="btn btn-primary" type="button" onclick="checkCall()">Check Call</button>
+          <button class="btn btn-danger" type="button" onclick="clearFields()">Clear Fields</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="container-fluid form-row" id="divres">
+    <h1>Results</h1>
+    <div id="result"></div>
+  </div>
+</body>
+</html>

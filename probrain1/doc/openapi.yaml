@@ -1,0 +1,123 @@
+openapi: 3.0.1
+info:
+  title: ProBrain API Documentation
+  description: >-
+    API for registering movies and consulting the information of movies
+    already registered
+  contact:
+    name: Stefferson
+    url: 'https://lnkd.in/dXRnp7M'
+    email: steffersonthallys@gmail.com
+  version: 1.0.0
+servers:
+  - url: 'http://localhost:3000/'
+tags:
+  - name: Movies
+    description: Operations about movies
+paths:
+  /api/movies/:
+    get:
+      tags:
+        - Movies
+      summary: Creates list of with all movies
+      description: Returns a list of movies registered
+      operationId: createMovieList
+      responses:
+        '200':
+          description: Sucessfull operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Movie'
+  /api/movie:
+    post:
+      tags:
+      - Movies
+      summary: Create movie
+      operationId: createMovie
+      requestBody:
+        description: Movie object that needs to be added to the list
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Movie'
+        required: true
+      responses:
+        400:
+          description: Fill in all field
+          content: {}
+        default:
+          description: Sucessfull operation
+          content: {}
+      x-codegen-request-body-name: body
+  /api/movie/{index}:
+    put:
+      tags:
+      - Movies
+      summary: Updated movie
+      operationId: updateMovie
+      parameters:
+        - name: index
+          in: path
+          description: The index that needs to be modified
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: This can update
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Movie'
+        required: true
+      responses:
+        default:
+          description: Sucessfull operation
+          content: {}
+        400:
+          description: Fill in all field
+          content: {}
+        404:
+          description: Movie not found
+          content: {}
+      x-codegen-request-body-name: body
+    delete:
+      tags:
+        - Movies
+      summary: Delete movie
+      description: This can delete movie register completaly.
+      operationId: deleteMovie
+      parameters:
+        - name: index
+          in: path
+          description: The index that needs to be deleted
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Sucessfull operation
+          content: {}
+        '404':
+          description: Movie not found
+          content: {}
+components:
+  schemas:
+    Movie:
+      required:
+        - title
+        - description
+        - type
+        - classification
+      type: object
+      properties:
+        title:
+          type: string
+        description:
+          type: string
+        type:
+          type: string
+        classification:
+          type: string

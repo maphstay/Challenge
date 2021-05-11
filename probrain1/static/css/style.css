@@ -1,0 +1,58 @@
+.myBackground {
+    background-image: url(../img/bkgrd.jpg);
+    background-position: center;
+    color: white;
+    background-size: 100%;
+}
+
+.myBackground2 {
+    background-image: url(../img/bckgrd01.jpg);
+    background-position: center;
+    color: white;
+    background-size: 100%;
+}
+
+label {
+    font-size: 17pt;
+    -webkit-text-stroke-width: .8px;
+    -webkit-text-stroke-color: black;
+}
+
+#tabMovies {
+    position: absolute;
+    width: 83%;
+    justify-content: center;
+}
+
+thead th,
+tbody {
+    text-align: center;
+}
+
+td,
+tbody,
+tr,
+thead,
+th {
+    background-color: rgba(0, 0, 0, .3);
+}
+
+tr {
+    font-size: 13pt;
+}
+
+td {
+    font-size: 10pt;
+}
+
+table thead th:first-child {
+    border-radius: 2rem 2rem 0 0;
+}
+
+table tbody tr:last-child td.footable-first-visible {
+    border-radius: 0 0 0 2rem;
+}
+
+table tbody tr:last-child td.footable-last-visible {
+    border-radius: 0 0 2rem 0;
+}

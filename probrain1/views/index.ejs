@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="../static/css/footable.bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../static/css/style.css">
+    <!--[if lt IE 9]>
+    <script src="//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="//oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+    <script src="https://unpkg.com/mustache@latest"></script>
+    <style>
+        
+    </style>
+</head>
+<body class="myBackground">
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.3/moment.min.js"></script>
+  <script src="../static/js/footable.min.js"></script>
+  <header>
+    <title>Movies Home</title>
+    <div class="container">
+      <h2>Movies</h2>
+
+      <a class="btn btn-primary" href="/movie/new"><i class="glyphicon glyphicon-plus"></i> Register</a>
+    </div>
+  </header>
+  <div class="container">
+    <table id="tabMovies" class="table">
+    <script type="text/javascript" charset="utf-8">
+      jQuery(document).ready(function($) {
+        let list = []
+          axios.get('http://localhost:3000/api/movies')
+          .then(response => criaListaDinamica(response.data))
+          .catch(error => console.log(error))
+
+        const criaListaDinamica = (movies) => {
+          movies.map((movie, index) => {
+            let items = {};
+              items["id"] = index+1;
+              items["title"] = movie.title;
+              items["description"] = movie.description;
+              items["type"] = movie.type
+              items["classification"] = movie.classification
+              let botEdit = `<a class="btn btn-info btn-xs" href="/movie/edit/${index}" role="button"><i class="glyphicon glyphicon-pencil"></i></a>&nbsp;`
+              let botDel = 
+              `<form action="/movie/delete/${index}" method="POST" style="display: contents;">
+                <button class="btn btn-danger btn-xs" role="button" type="button" data-toggle="modal" data-target="#confirm"><i class="glyphicon glyphicon-trash"></i></button>
+                <div class="modal fade" id="confirm" role="dialog">
+                  <div class="modal-dialog modal-md" style="display: flex; text-align: center; justify-content: center">
+                    <div class="modal-content" style="width: 400px;">
+                      <div class="modal-body">
+                            <p style="color: black; text-align: center; font-size: 15pt"> Do you really want to delete?</p>
+                      </div>
+                      <div class="modal-footer">
+                        <button class="btn btn-danger" role="button" type="submit">Delete Movie</i></button>
+                            <button type="button" data-dismiss="modal" class="btn btn-default">Cancel</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </form>`
+              
+              items["action"] = botEdit + botDel
+              list.push(items);
+          })
+      
+          $('.table').footable({
+            "paging": {
+              "enabled": true,
+              "delay":500
+            },
+            "filtering": {
+              "enabled": true,
+              "connectors": false
+            },
+            "sorting": {
+             "enabled": true
+            },
+            "showHeader": true,
+            "columns": [
+              { "name": "id", "title": "ID", "visible": false },
+              { "name": "title", "title": "Title" },
+              { "name": "description", "title": "Description", "breakpoints": "xs sm md lg" },
+              { "name": "type", "title": "Type" },
+              { "name": "classification", "title": "Classification" },
+              { "name": "action", "title": "Actions" }
+            ],
+            "rows": list
+          })
+        }
+      })
+    </script>
+  </div>
+</body>
+</html>
